@@ -46,14 +46,10 @@ export default function BentoGrid() {
                     <div className="flex drop-shadow-md bg-white rounded-full justify-center p-4 pr-6">
                         <div className="flex items-center gap-2">
                             <div
-                                className="rounded-full p-0.5"
+                                className="rounded-full w-9 h-9 p-1.5"
                                 style={{ backgroundColor: YELLOW_500 }}
                             >
-                                <Image
-                                    className="w-8 h-8"
-                                    src={InstaLogo}
-                                    alt="instagram logo"
-                                />
+                                <Image src={InstaLogo} alt="instagram logo" />
                             </div>
                             <div>
                                 <div
