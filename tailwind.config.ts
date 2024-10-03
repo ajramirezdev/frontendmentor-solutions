@@ -62,6 +62,10 @@ const config: Config = {
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
             },
+            gridTemplateRows: {
+                "bento-row": "416px 152px 250px",
+                "inner-bento-row": "324px 248px",
+            },
         },
     },
     plugins: [require("tailwindcss-animate")],
