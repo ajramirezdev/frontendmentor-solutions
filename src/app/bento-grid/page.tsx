@@ -25,14 +25,14 @@ export default function BentoGrid() {
             style={{ backgroundColor: "#f5f5f5" }}
             className={`py-8 px-4 w-full ${dm_sans.className} xl:flex xl:justify-center xl:items-center xl:p-0 xl:h-screen`}
         >
-            <div className="xl:w-[1120px] xl:h-[880px] grid xl:grid-cols-4 xl:grid-rows-bento-row gap-8">
-                <div className="flex flex-col gap-8 xl:grid xl:col-span-2 xl:row-span-2 xl:grid-cols-2 xl:grid-rows-inner-bento-row">
+            <div className="xl:w-[1120px] xl:h-[880px] grid gap-8 xl:grid-cols-4 xl:grid-rows-bento-row md:grid-cols-2 lg:grid-cols-3">
+                <div className="flex flex-col gap-8 xl:grid xl:col-span-2 xl:row-span-2 xl:grid-cols-2 xl:grid-rows-inner-bento-row md:col-span-2 md:grid md:grid-cols-2">
                     <div
-                        className="rounded-[10px] flex flex-col items-center xl:justify-center p-8 xl:col-span-2"
+                        className="rounded-[10px] flex flex-col items-center xl:justify-center p-8 xl:col-span-2 md:col-span-2"
                         style={{ backgroundColor: PURPLE_500 }}
                     >
                         <div
-                            className="text-5xl xl:text-6xl -tracking-2 font-medium text-center mb-5 leading-[44px]"
+                            className="text-5xl xl:text-6xl -tracking-2 font-medium text-center mb-5 leading-[44px] md:w-[400px] xl:w-full"
                             style={{ color: WHITE }}
                         >
                             Social Media{" "}
@@ -51,7 +51,7 @@ export default function BentoGrid() {
                         </div>
                     </div>
                     <div className="p-4 xl:p-6 rounded-[10px] drop-shadow-md bg-white xl:overflow-hidden">
-                        <div className="flex justify-between mb-4 xl:gap-4">
+                        <div className="flex mb-4 gap-4">
                             <div className="flex drop-shadow-md bg-white rounded-full justify-center p-4 pr-6">
                                 <div className="flex items-center gap-2">
                                     <div
