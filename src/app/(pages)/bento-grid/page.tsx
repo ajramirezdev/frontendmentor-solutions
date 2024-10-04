@@ -1,4 +1,4 @@
-import { dm_sans } from "../fonts/fonts";
+import { dm_sans } from "../../fonts/fonts";
 import Image from "next/image";
 
 import FiveStars from "@/assets/bento-grid/illustration-five-stars.webp";
