@@ -39,3 +39,13 @@
 .submitButton {
     background-color: hsl(61, 70%, 52%);
 }
+
+.clearAllButton {
+    color: hsl(200, 24%, 40%);
+    border-color: hsl(200, 26%, 54%);
+    font-weight: 500;
+}
+
+.clearAllButton:hover {
+    color: hsl(202, 55%, 16%);
+}
