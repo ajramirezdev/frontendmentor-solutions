@@ -27,3 +27,15 @@
     border: 0.15em solid hsl(61, 70%, 52%);
     color: hsl(61, 70%, 52%);
 }
+
+.radioInputHover {
+    border-color: hsl(200, 26%, 54%);
+}
+
+.radioInputHover:hover {
+    border-color: hsl(61, 70%, 52%);
+}
+
+.submitButton {
+    background-color: hsl(61, 70%, 52%);
+}

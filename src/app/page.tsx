@@ -20,7 +20,7 @@ export default function Home() {
                         href="/mortgage-repayment-calculator"
                         className={`${buttonVariants({ variant: "outline" })}`}
                     >
-                        Mortgage Repayment Calculator
+                        Mortgage Calculator
                     </Link>
                 </div>
             </ScrollArea>
