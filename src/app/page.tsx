@@ -17,7 +17,7 @@ export default function Home() {
                         Bento Grid
                     </Link>
                     <Link
-                        href="/mortgage-repayment-calculator"
+                        href="/mortgage-calculator"
                         className={`${buttonVariants({ variant: "outline" })}`}
                     >
                         Mortgage Calculator

@@ -120,6 +120,11 @@ export default function MortgageRepaymentCalculator() {
                                     rate: false,
                                     type: "",
                                 });
+
+                                setPayments({
+                                    monthly: 0,
+                                    total: 0,
+                                });
                             }}
                         >
                             Clear All
@@ -312,7 +317,7 @@ export default function MortgageRepaymentCalculator() {
                                     <input
                                         className="w-full bg-white rounded-sm outline-none py-2.5 px-4 font-bold"
                                         type="text"
-                                        // pattern="[0-9]+"
+                                        pattern="[0-9]+(\.[0-9]+)?"
                                         inputMode="numeric"
                                         name="rate"
                                         value={formData.rate}
@@ -467,18 +472,75 @@ export default function MortgageRepaymentCalculator() {
                     </form>
                 </div>
                 <div
-                    className="flex flex-col items-center gap-4 py-8 px-10 lg:justify-center lg:px-4 lg:w-1/2 lg:rounded-e-3xl lg:rounded-bl-[80px]"
+                    className="lg:w-1/2 lg:rounded-e-3xl lg:rounded-bl-[80px]"
                     style={{ backgroundColor: SLATE_900 }}
                 >
-                    <Image src={Empty} alt="Empty ilustration" />
-                    <div className="text-white font-bold text-2xl">
-                        Results shown here
-                    </div>
-                    <div className="text-center" style={{ color: SLATE_300 }}>
-                        Complete the from and click &quot;calculate
-                        repayments&quot; to see waht your monthly repayments
-                        would be.
-                    </div>
+                    {payments.monthly === 0 ? (
+                        <div className="flex flex-col items-center gap-4 py-8 px-10 lg:justify-center lg:px-8 lg:h-full">
+                            <Image src={Empty} alt="Empty ilustration" />
+                            <div className="text-white font-bold text-2xl">
+                                Results shown here
+                            </div>
+                            <div
+                                className="text-center"
+                                style={{ color: SLATE_300 }}
+                            >
+                                Complete the from and click &quot;calculate
+                                repayments&quot; to see waht your monthly
+                                repayments would be.
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="px-4 py-8 flex flex-col gap-4 lg:p-10">
+                            <div className="text-white font-bold text-2xl">
+                                Your results
+                            </div>
+                            <div
+                                className="lg:mb-6"
+                                style={{ color: SLATE_300 }}
+                            >
+                                Your results are shown below based on the
+                                information you provided. To adjust the results,
+                                edit the form and click &quot;calculate
+                                repayments&quot; again.
+                            </div>
+                            <div
+                                className="rounded-md pt-1"
+                                style={{ backgroundColor: LIME }}
+                            >
+                                <div className="bg-[#0e2431] rounded-sm p-4 flex flex-col lg:p-8">
+                                    <div style={{ color: SLATE_300 }}>
+                                        Your monthly repayments
+                                    </div>
+                                    <div
+                                        className="font-bold text-[42px] mb-4 lg:text-[55px]"
+                                        style={{ color: LIME }}
+                                    >
+                                        £
+                                        {Number(
+                                            payments.monthly.toFixed(2)
+                                        ).toLocaleString()}
+                                    </div>
+                                    <div
+                                        style={{ borderColor: "#304653" }}
+                                        className="border-b mb-4 lg:mb-6"
+                                    ></div>
+                                    <div
+                                        className="mb-3"
+                                        style={{ color: SLATE_300 }}
+                                    >
+                                        Total you&apos;ll repay over the term
+                                    </div>
+                                    <div className="text-white text-2xl font-bold">
+                                        £
+                                        {Number(
+                                            payments.total.toFixed(2)
+                                        ).toLocaleString()}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
