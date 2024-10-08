@@ -345,7 +345,7 @@ export default function MortgageRepaymentCalculator() {
                                                 rate: false,
                                             })
                                         }
-                                        id="rate"
+                                        id="interest"
                                     />
                                     <div
                                         className="font-bold py-2.5 px-4 text-lg rounded-e-sm"
