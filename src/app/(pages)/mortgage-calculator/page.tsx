@@ -345,7 +345,7 @@ export default function MortgageRepaymentCalculator() {
                                                 rate: false,
                                             })
                                         }
-                                        id="interest"
+                                        id="rate"
                                     />
                                     <div
                                         className="font-bold py-2.5 px-4 text-lg rounded-e-sm"
@@ -374,13 +374,12 @@ export default function MortgageRepaymentCalculator() {
                             </div>
                         </div>
                         <div className="relative">
-                            <label
+                            <div
                                 className="font-medium"
                                 style={{ color: SLATE_700 }}
-                                htmlFor="type"
                             >
                                 Mortgage Type
-                            </label>
+                            </div>
                             <div className=" mt-2">
                                 <div
                                     className={`flex items-center border py-[9px] px-4 rounded-sm gap-4 mb-2 cursor-pointer border-[#6b94a8] hover:border-[#d7da2f] ${
@@ -391,7 +390,7 @@ export default function MortgageRepaymentCalculator() {
                                     <input
                                         className={`${styles.radioInputs}`}
                                         type="radio"
-                                        id="type"
+                                        id="repayment"
                                         value="Repayment"
                                         name="type"
                                         checked={isFocused.type === "repayment"}
@@ -428,7 +427,7 @@ export default function MortgageRepaymentCalculator() {
                                     <input
                                         className={`${styles.radioInputs}`}
                                         type="radio"
-                                        id="type"
+                                        id="interest-only"
                                         value="Interest Only"
                                         name="type"
                                         checked={isFocused.type === "interest"}
