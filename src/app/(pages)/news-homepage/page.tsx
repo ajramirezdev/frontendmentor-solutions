@@ -1,24 +1,41 @@
 import Image from "next/image";
 import { inter } from "../../fonts/fonts";
 import styles from "./styles.module.css";
+import {
+    Sheet,
+    SheetContent,
+    SheetTrigger,
+} from "@/components/ui/news-homepage-sheet";
 
 import Logo from "@/assets/news-homepage/logo.svg";
 import MenuIcon from "@/assets/news-homepage/icon-menu.svg";
-// import MenuCloseIcon from "@/assets/news-homepage/icon-menu-close.svg";
 import GamingGrowth from "@/assets/news-homepage/image-gaming-growth.jpg";
 import RetroPCs from "@/assets/news-homepage/image-retro-pcs.jpg";
 import TopLaptops from "@/assets/news-homepage/image-top-laptops.jpg";
-// import Web3Desktop from "@/assets/news-homepage/image-web-3-desktop.jpg";
 import Web3Mobile from "@/assets/news-homepage/image-web-3-mobile.jpg";
+import Link from "next/link";
 
 export default function NewsHomepage() {
     return (
         <main className={`${inter.className} ${styles.main} py-8 px-4`}>
             <nav className="flex items-center justify-between mb-8">
                 <Image width={45} src={Logo} alt="logo" />
-                <button>
-                    <Image src={MenuIcon} alt="Menu icon" />
-                </button>
+                <div className="lg:hidden">
+                    <Sheet>
+                        <SheetTrigger>
+                            <Image src={MenuIcon} alt="Menu icon" />
+                        </SheetTrigger>
+                        <SheetContent>
+                            <div className="flex flex-col gap-5">
+                                <Link href={"/news-homepage"}>Home</Link>
+                                <Link href={"/news-homepage"}>New</Link>
+                                <Link href={"/news-homepage"}>Popular</Link>
+                                <Link href={"/news-homepage"}>Trending</Link>
+                                <Link href={"/news-homepage"}>Categories</Link>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </div>
             </nav>
             <section className="mb-16">
                 <Image className="mb-8" src={Web3Mobile} alt="web 3 image" />
