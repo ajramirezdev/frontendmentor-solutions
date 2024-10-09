@@ -22,6 +22,12 @@ export default function Home() {
                     >
                         Mortgage Calculator
                     </Link>
+                    <Link
+                        href="/news-homepage"
+                        className={`${buttonVariants({ variant: "outline" })}`}
+                    >
+                        News Homepage
+                    </Link>
                 </div>
             </ScrollArea>
         </div>

@@ -1,0 +1,51 @@
+.main {
+    --soft-orange: hsl(35, 77%, 62%);
+    --soft-red: hsl(5, 85%, 63%);
+    --off-white: hsl(36, 100%, 99%);
+    --grayish-blue: hsl(233, 8%, 79%);
+    --dark-grayish-blue: hsl(236, 13%, 42%);
+    --very-dark-blue: hsl(240, 100%, 5%);
+
+    background-color: var(--off-white);
+    font-size: 15px;
+}
+
+.textSoftOrange {
+    color: var(--soft-orange);
+}
+
+.textSoftRed {
+    color: var(--soft-red);
+}
+
+.textOffWhite {
+    color: var(--off-white);
+}
+
+.textGrayishBlue {
+    color: var(--grayish-blue);
+}
+
+.textDarkGrayishBlue {
+    color: var(--dark-grayish-blue);
+}
+
+.textVeryDarkBlue {
+    color: var(--very-dark-blue);
+}
+
+.bgSoftRed {
+    background-color: var(--soft-red);
+}
+
+.bgOffWhite {
+    background-color: var(--off-white);
+}
+
+.bgVeryDarkBlue {
+    background-color: var(--very-dark-blue);
+}
+
+.borderDarkGrayishBlue {
+    border-color: var(--dark-grayish-blue);
+}
