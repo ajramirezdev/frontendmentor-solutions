@@ -28,6 +28,12 @@ export default function Home() {
                     >
                         News Homepage
                     </Link>
+                    <Link
+                        href="/agency-landing"
+                        className={`${buttonVariants({ variant: "outline" })}`}
+                    >
+                        Agency Landing Page
+                    </Link>
                 </div>
             </ScrollArea>
         </div>
