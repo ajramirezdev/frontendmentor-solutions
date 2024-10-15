@@ -15,6 +15,10 @@ const config: Config = {
             "4": "0.1em",
         },
         extend: {
+            screens: {
+                "2xl": "1440px",
+                // => @media (min-width: 1440px) { ... }
+            },
             colors: {
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",

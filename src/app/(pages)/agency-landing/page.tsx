@@ -24,6 +24,16 @@ import MobileOrange from "@/assets/agency-landing/mobile/image-gallery-orange.jp
 import MobileMilkBottles from "@/assets/agency-landing/mobile/image-gallery-milkbottles.jpg";
 import MobileCone from "@/assets/agency-landing/mobile/image-gallery-cone.jpg";
 
+import DesktopHeader from "@/assets/agency-landing/desktop/image-header.jpg";
+import DesktopTransform from "@/assets/agency-landing/desktop/image-transform.jpg";
+import DesktopStandOut from "@/assets/agency-landing/desktop/image-stand-out.jpg";
+import DesktopGraphicDesign from "@/assets/agency-landing/desktop/image-graphic-design.jpg";
+import DesktopPhotography from "@/assets/agency-landing/desktop/image-photography.jpg";
+import DesktopSugarCubes from "@/assets/agency-landing/desktop/image-gallery-sugarcubes.jpg";
+import DesktopOrange from "@/assets/agency-landing/desktop/image-gallery-orange.jpg";
+import DesktopMilkBottles from "@/assets/agency-landing/desktop/image-gallery-milkbottles.jpg";
+import DesktopCone from "@/assets/agency-landing/desktop/image-gallery-cone.jpg";
+
 import Link from "next/link";
 
 export default function AgencyLanding() {
@@ -32,25 +42,58 @@ export default function AgencyLanding() {
             className={`${barlow.className} ${styles.textNormal} bg-[#fffbf8]`}
         >
             <section className="relative">
-                <div className="absolute w-full px-6 py-8 flex flex-col items-center">
+                <div className="absolute w-full px-6 py-8 2xl:px-12 2xl:py-[34px] flex flex-col items-center">
                     <nav className="flex justify-between items-center w-full mb-24">
-                        <Image src={Logo} alt="logo" />
-                        <Image src={Hamburger} alt="menu icon" />
+                        <Image
+                            className="2xl:w-[170px]"
+                            src={Logo}
+                            alt="logo"
+                        />
+                        <Image
+                            className="2xl:hidden"
+                            src={Hamburger}
+                            alt="menu icon"
+                        />
+                        <div className="2xl:flex gap-12 items-center hidden">
+                            <Link href="/agency-landing">About</Link>
+                            <Link href="/agency-landing">Services</Link>
+                            <Link href="/agency-landing">Projects</Link>
+                            <Link
+                                className={`${fraunces.className} text-[hsl(167,40%,24%)] bg-[#fffbf8] font-black text-base px-8 py-4 rounded-full`}
+                                href="/agency-landing"
+                            >
+                                CONTACT
+                            </Link>
+                        </div>
                     </nav>
                     <h1
-                        className={`${fraunces.className} font-black text-[2.35rem] text-center tracking-[0.21em] leading-tight mb-11`}
+                        className={`${fraunces.className} font-black text-[2.35rem] 2xl:text-[3.35rem] text-center tracking-[0.21em] leading-tight mb-11 2xl:mb-[6.5rem]`}
                     >
                         WE ARE CREATIVES
                     </h1>
                     <Image src={ArrowDown} alt="arrow down icon" />
                 </div>
-                <Image src={MobileHeader} alt="header for mobile" />
+                <Image
+                    className="2xl:hidden"
+                    src={MobileHeader}
+                    alt="header for mobile"
+                />
+                <Image
+                    className="hidden 2xl:block"
+                    src={DesktopHeader}
+                    alt="header for desktop"
+                />
             </section>
-            <section>
-                <Image src={MobileTransform} alt="egg" />
-                <div className="flex flex-col gap-6 items-center text-center px-6 py-[4.3rem]">
+            <section className="2xl:flex 2xl:flex-row-reverse">
+                <Image className="2xl:hidden" src={MobileTransform} alt="egg" />
+                <Image
+                    className="hidden 2xl:block w-1/2"
+                    src={DesktopTransform}
+                    alt="egg desktop"
+                />
+                <div className="flex flex-col gap-6 2xl:items-start items-center 2xl:justify-center text-center 2xl:text-left px-6 py-[4.3rem] 2xl:w-1/2 2xl:pl-[165px] 2xl:pr-[100px]">
                     <div
-                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight`}
+                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight 2xl:text-[2.5rem] 2xl:leading-none`}
                     >
                         Transform your brand
                     </div>
@@ -61,7 +104,7 @@ export default function AgencyLanding() {
                         you.
                     </div>
                     <Link
-                        className={`group ${fraunces.className} text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
+                        className={`group ${fraunces.className} 2xl:text-center text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
                         href="/agency-landing"
                     >
                         LEARN MORE
@@ -69,11 +112,16 @@ export default function AgencyLanding() {
                     </Link>
                 </div>
             </section>
-            <section>
-                <Image src={MobileStandOut} alt="cup" />
-                <div className="flex flex-col gap-6 items-center text-center px-6 py-[4.3rem]">
+            <section className="2xl:flex">
+                <Image className="2xl:hidden" src={MobileStandOut} alt="cup" />
+                <Image
+                    className="hidden 2xl:block w-1/2"
+                    src={DesktopStandOut}
+                    alt="cup desktop"
+                />
+                <div className="flex flex-col gap-6 2xl:items-start items-center 2xl:justify-center text-center 2xl:text-left px-6 py-[4.3rem] 2xl:w-1/2 2xl:pr-[165px] 2xl:pl-[100px]">
                     <div
-                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight`}
+                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight 2xl:text-[2.5rem] 2xl:leading-none`}
                     >
                         Stand out to the right audience
                     </div>
@@ -84,7 +132,7 @@ export default function AgencyLanding() {
                         places.
                     </div>
                     <Link
-                        className={`group ${fraunces.className} text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
+                        className={`group ${fraunces.className} 2xl:text-center text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
                         href="/agency-landing"
                     >
                         LEARN MORE
@@ -92,43 +140,64 @@ export default function AgencyLanding() {
                     </Link>
                 </div>
             </section>
-            <section className="relative">
-                <div className="absolute bottom-16 px-5 text-base text-center">
-                    <div
-                        className={`${fraunces.className} text-[hsl(167,40%,24%)] font-black text-[2rem] mb-8`}
-                    >
-                        Graphic Design
+            <div className="2xl:flex">
+                <section className="relative 2xl:w-1/2">
+                    <div className="absolute bottom-16 px-5 text-base text-center 2xl:px-[190px]">
+                        <div
+                            className={`${fraunces.className} text-[hsl(167,40%,24%)] font-black text-[2rem] mb-8`}
+                        >
+                            Graphic Design
+                        </div>
+                        <div className="text-[hsl(167,40%,24%)]">
+                            Great design makes you memorable. We deliver artwork
+                            that underscores your brand message and captures
+                            potential clients&apos; attention.
+                        </div>
                     </div>
-                    <div className="text-[hsl(167,40%,24%)]">
-                        Great design makes you memorable. We deliver artwork
-                        that underscores your brand message and captures
-                        potential clients&apos; attention.
+                    <Image
+                        className="2xl:hidden"
+                        src={MobileGraphicDesign}
+                        alt="cherries"
+                    />
+                    <Image
+                        className="hidden 2xl:block w-full"
+                        src={DesktopGraphicDesign}
+                        alt="cherries desktop"
+                    />
+                </section>
+                <section className="relative 2xl:w-1/2">
+                    <div className="absolute bottom-16 px-5 text-base text-center 2xl:px-[190px]">
+                        <div
+                            className={`${fraunces.className} text-[hsl(198,62%,26%)] font-black text-[2rem] mb-8`}
+                        >
+                            Photography
+                        </div>
+                        <div className="text-[hsl(198,62%,26%)]">
+                            Increase your credibility by getting the most
+                            stunning, high-quality photos that improve your
+                            business image.
+                        </div>
                     </div>
-                </div>
-                <Image src={MobileGraphicDesign} alt="cherries" />
-            </section>
-            <section className="relative">
-                <div className="absolute bottom-16 px-5 text-base text-center">
-                    <div
-                        className={`${fraunces.className} text-[hsl(198,62%,26%)] font-black text-[2rem] mb-8`}
-                    >
-                        Photography
-                    </div>
-                    <div className="text-[hsl(198,62%,26%)]">
-                        Increase your credibility by getting the most stunning,
-                        high-quality photos that improve your business image.
-                    </div>
-                </div>
-                <Image src={MobilePhotography} alt="orange" />
-            </section>
-            <section className="px-6 text-center pt-16 pb-[90px]">
+                    <Image
+                        className="2xl:hidden"
+                        src={MobilePhotography}
+                        alt="orange"
+                    />
+                    <Image
+                        className="hidden 2xl:block w-full"
+                        src={DesktopPhotography}
+                        alt="orange desktop"
+                    />
+                </section>
+            </div>
+            <section className="px-6 text-center pt-16 pb-[90px] 2xl:px-[140px] 2xl:pt-[158px] 2xl:pb-[164px]">
                 <h3
-                    className={`${fraunces.className} text-[hsl(210,4%,67%)] font-black text-base tracking-[0.24em] mb-[3.75rem]`}
+                    className={`${fraunces.className} text-[hsl(210,4%,67%)] font-black text-base tracking-[0.24em] mb-[3.75rem] 2xl:text-xl mb-20`}
                 >
                     CLIENT TESTIMONIALS
                 </h3>
-                <div className="flex flex-col gap-16">
-                    <div className="flex flex-col items-center gap-8">
+                <div className="flex flex-col gap-16 2xl:flex-row 2xl:gap-12">
+                    <div className="flex flex-col items-center gap-8 2xl:gap-16 2xl:w-1/3">
                         <Image
                             className="w-[72px] rounded-full"
                             src={Emily}
@@ -150,7 +219,7 @@ export default function AgencyLanding() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center gap-8">
+                    <div className="flex flex-col items-center gap-8 2xl:gap-16 2xl:w-1/3">
                         <Image
                             className="w-[72px] rounded-full"
                             src={Thomas}
@@ -172,7 +241,7 @@ export default function AgencyLanding() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center gap-8">
+                    <div className="flex flex-col items-center gap-8 2xl:gap-16 2xl:w-1/3">
                         <Image
                             className="w-[72px] rounded-full"
                             src={Jennie}
@@ -195,11 +264,25 @@ export default function AgencyLanding() {
                     </div>
                 </div>
             </section>
-            <section className="grid grid-cols-2">
+            <section className="grid grid-cols-2 2xl:hidden">
                 <Image src={MobileMilkBottles} alt="milk bottles" />
                 <Image src={MobileOrange} alt="orange" />
                 <Image src={MobileCone} alt="cone" />
                 <Image src={MobileSugarCubes} alt="sugar cube" />
+            </section>
+            <section className="hidden 2xl:flex">
+                <Image
+                    className="w-1/4"
+                    src={DesktopMilkBottles}
+                    alt="milk bottles"
+                />
+                <Image className="w-1/4" src={DesktopOrange} alt="orange" />
+                <Image className="w-1/4" src={DesktopCone} alt="cone" />
+                <Image
+                    className="w-1/4"
+                    src={DesktopSugarCubes}
+                    alt="sugar cube"
+                />
             </section>
             <footer className="bg-[#90d4c5] flex flex-col items-center pt-16 pb-24">
                 <Image
