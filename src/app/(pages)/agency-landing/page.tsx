@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { barlow, fraunces } from "../../fonts/fonts";
 import styles from "./styles.module.css";
@@ -35,31 +37,68 @@ import DesktopMilkBottles from "@/assets/agency-landing/desktop/image-gallery-mi
 import DesktopCone from "@/assets/agency-landing/desktop/image-gallery-cone.jpg";
 
 import Link from "next/link";
+import { useState } from "react";
 
 export default function AgencyLanding() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
         <main
-            className={`${barlow.className} ${styles.textNormal} bg-[#fffbf8]`}
+            className={`${barlow.className} ${styles.textNormal} bg-[#fffbf8] relative`}
         >
+            {isMenuOpen && (
+                <div
+                    className={
+                        "absolute bg-[#fffbf8] right-[22px] left-[22px] top-[106px] h-[304px] z-20 flex flex-col gap-7 justify-center items-center"
+                    }
+                >
+                    <Link
+                        className="text-[hsl(232,10%,55%)]"
+                        href="/agency-landing"
+                    >
+                        About
+                    </Link>
+                    <Link
+                        className="text-[hsl(232,10%,55%)]"
+                        href="/agency-landing"
+                    >
+                        Services
+                    </Link>
+                    <Link
+                        className="text-[hsl(232,10%,55%)]"
+                        href="/agency-landing"
+                    >
+                        Projects
+                    </Link>
+                    <Link
+                        className={`${fraunces.className} text-[hsl(212,27%,19%)] bg-[hsl(51,100%,49%)] font-black text-base px-8 py-4 rounded-full`}
+                        href="/agency-landing"
+                    >
+                        CONTACT
+                    </Link>
+                </div>
+            )}
+            {isMenuOpen && (
+                <div
+                    className={`absolute z-20 ${styles.triangleElement} right-[22px] top-[81px]`}
+                ></div>
+            )}
             <section className="relative">
                 <div className="absolute w-full px-6 py-8 2xl:px-12 2xl:py-[34px] flex flex-col items-center">
                     <nav className="flex justify-between items-center w-full mb-24">
-                        <Image
-                            className="2xl:w-[170px]"
-                            src={Logo}
-                            alt="logo"
-                        />
-                        <Image
-                            className="2xl:hidden"
-                            src={Hamburger}
-                            alt="menu icon"
-                        />
-                        <div className="2xl:flex gap-12 items-center hidden">
+                        <Image className="lg:w-[170px]" src={Logo} alt="logo" />
+                        <button
+                            className="lg:hidden"
+                            onClick={() => setIsMenuOpen((prev) => !prev)}
+                        >
+                            <Image src={Hamburger} alt="menu icon" />
+                        </button>
+                        <div className="lg:flex gap-12 items-center hidden">
                             <Link href="/agency-landing">About</Link>
                             <Link href="/agency-landing">Services</Link>
                             <Link href="/agency-landing">Projects</Link>
                             <Link
-                                className={`${fraunces.className} text-[hsl(167,40%,24%)] bg-[#fffbf8] font-black text-base px-8 py-4 rounded-full`}
+                                className={`${fraunces.className} text-[hsl(212,27%,19%)] bg-[#fffbf8] hover:bg-[#6ed0ff] hover:text-[#fffbf8] font-black text-base px-8 py-4 rounded-full`}
                                 href="/agency-landing"
                             >
                                 CONTACT
@@ -67,33 +106,37 @@ export default function AgencyLanding() {
                         </div>
                     </nav>
                     <h1
-                        className={`${fraunces.className} font-black text-[2.35rem] 2xl:text-[3.35rem] text-center tracking-[0.21em] leading-tight mb-11 2xl:mb-[6.5rem]`}
+                        className={`${fraunces.className} font-black text-[2.35rem] lg:text-5xl 2xl:text-[3.35rem] text-center tracking-[0.21em] leading-tight mb-11 lg:mb-14 2xl:mb-[6.5rem]`}
                     >
                         WE ARE CREATIVES
                     </h1>
                     <Image src={ArrowDown} alt="arrow down icon" />
                 </div>
                 <Image
-                    className="2xl:hidden"
+                    className="lg:hidden w-full"
                     src={MobileHeader}
                     alt="header for mobile"
                 />
                 <Image
-                    className="hidden 2xl:block"
+                    className="hidden lg:block"
                     src={DesktopHeader}
                     alt="header for desktop"
                 />
             </section>
-            <section className="2xl:flex 2xl:flex-row-reverse">
-                <Image className="2xl:hidden" src={MobileTransform} alt="egg" />
+            <section className="lg:flex lg:flex-row-reverse">
                 <Image
-                    className="hidden 2xl:block w-1/2"
+                    className="lg:hidden w-full"
+                    src={MobileTransform}
+                    alt="egg"
+                />
+                <Image
+                    className="hidden lg:block w-1/2"
                     src={DesktopTransform}
                     alt="egg desktop"
                 />
-                <div className="flex flex-col gap-6 2xl:items-start items-center 2xl:justify-center text-center 2xl:text-left px-6 py-[4.3rem] 2xl:w-1/2 2xl:pl-[165px] 2xl:pr-[100px]">
+                <div className="flex flex-col gap-6 2xl:items-start items-center lg:justify-center text-center 2xl:text-left px-6 py-[4.3rem] lg:w-1/2 2xl:pl-[165px] 2xl:pr-[100px]">
                     <div
-                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight 2xl:text-[2.5rem] 2xl:leading-none`}
+                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight 2xl:text-[2.5rem] lg:leading-none`}
                     >
                         Transform your brand
                     </div>
@@ -104,7 +147,7 @@ export default function AgencyLanding() {
                         you.
                     </div>
                     <Link
-                        className={`group ${fraunces.className} 2xl:text-center text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
+                        className={`group ${fraunces.className} lg:text-center text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
                         href="/agency-landing"
                     >
                         LEARN MORE
@@ -112,16 +155,20 @@ export default function AgencyLanding() {
                     </Link>
                 </div>
             </section>
-            <section className="2xl:flex">
-                <Image className="2xl:hidden" src={MobileStandOut} alt="cup" />
+            <section className="lg:flex">
                 <Image
-                    className="hidden 2xl:block w-1/2"
+                    className="lg:hidden w-full"
+                    src={MobileStandOut}
+                    alt="cup"
+                />
+                <Image
+                    className="hidden lg:block w-1/2"
                     src={DesktopStandOut}
                     alt="cup desktop"
                 />
-                <div className="flex flex-col gap-6 2xl:items-start items-center 2xl:justify-center text-center 2xl:text-left px-6 py-[4.3rem] 2xl:w-1/2 2xl:pr-[165px] 2xl:pl-[100px]">
+                <div className="flex flex-col gap-6 2xl:items-start items-center lg:justify-center text-center 2xl:text-left px-6 py-[4.3rem] lg:w-1/2 2xl:pr-[165px] 2xl:pl-[100px]">
                     <div
-                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight 2xl:text-[2.5rem] 2xl:leading-none`}
+                        className={`${fraunces.className} text-[hsl(212,27%,19%)] font-black text-[2rem] leading-tight 2xl:text-[2.5rem] lg:leading-none`}
                     >
                         Stand out to the right audience
                     </div>
@@ -132,7 +179,7 @@ export default function AgencyLanding() {
                         places.
                     </div>
                     <Link
-                        className={`group ${fraunces.className} 2xl:text-center text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
+                        className={`group ${fraunces.className} lg:text-center text-[hsl(212,27%,19%)] mt-4 font-black text-base`}
                         href="/agency-landing"
                     >
                         LEARN MORE
@@ -140,8 +187,8 @@ export default function AgencyLanding() {
                     </Link>
                 </div>
             </section>
-            <div className="2xl:flex">
-                <section className="relative 2xl:w-1/2">
+            <div className="lg:flex">
+                <section className="relative lg:w-1/2">
                     <div className="absolute bottom-16 px-5 text-base text-center 2xl:px-[190px]">
                         <div
                             className={`${fraunces.className} text-[hsl(167,40%,24%)] font-black text-[2rem] mb-8`}
@@ -155,17 +202,17 @@ export default function AgencyLanding() {
                         </div>
                     </div>
                     <Image
-                        className="2xl:hidden"
+                        className="lg:hidden w-full"
                         src={MobileGraphicDesign}
                         alt="cherries"
                     />
                     <Image
-                        className="hidden 2xl:block w-full"
+                        className="hidden lg:block w-full"
                         src={DesktopGraphicDesign}
                         alt="cherries desktop"
                     />
                 </section>
-                <section className="relative 2xl:w-1/2">
+                <section className="relative lg:w-1/2">
                     <div className="absolute bottom-16 px-5 text-base text-center 2xl:px-[190px]">
                         <div
                             className={`${fraunces.className} text-[hsl(198,62%,26%)] font-black text-[2rem] mb-8`}
@@ -179,18 +226,18 @@ export default function AgencyLanding() {
                         </div>
                     </div>
                     <Image
-                        className="2xl:hidden"
+                        className="lg:hidden w-full"
                         src={MobilePhotography}
                         alt="orange"
                     />
                     <Image
-                        className="hidden 2xl:block w-full"
+                        className="hidden lg:block w-full"
                         src={DesktopPhotography}
                         alt="orange desktop"
                     />
                 </section>
             </div>
-            <section className="px-6 text-center pt-16 pb-[90px] 2xl:px-[140px] 2xl:pt-[158px] 2xl:pb-[164px]">
+            <section className="px-6 md:px-[150px] lg:px-[300px] text-center pt-16 pb-[90px] 2xl:px-[140px] 2xl:pt-[158px] 2xl:pb-[164px]">
                 <h3
                     className={`${fraunces.className} text-[hsl(210,4%,67%)] font-black text-base tracking-[0.24em] mb-[3.75rem] 2xl:text-xl mb-20`}
                 >
@@ -264,13 +311,21 @@ export default function AgencyLanding() {
                     </div>
                 </div>
             </section>
-            <section className="grid grid-cols-2 2xl:hidden">
-                <Image src={MobileMilkBottles} alt="milk bottles" />
-                <Image src={MobileOrange} alt="orange" />
-                <Image src={MobileCone} alt="cone" />
-                <Image src={MobileSugarCubes} alt="sugar cube" />
+            <section className="grid grid-cols-2 lg:hidden">
+                <Image
+                    className="w-full"
+                    src={MobileMilkBottles}
+                    alt="milk bottles"
+                />
+                <Image className="w-full" src={MobileOrange} alt="orange" />
+                <Image className="w-full" src={MobileCone} alt="cone" />
+                <Image
+                    className="w-full"
+                    src={MobileSugarCubes}
+                    alt="sugar cube"
+                />
             </section>
-            <section className="hidden 2xl:flex">
+            <section className="hidden lg:flex">
                 <Image
                     className="w-1/4"
                     src={DesktopMilkBottles}
@@ -291,9 +346,24 @@ export default function AgencyLanding() {
                     alt="logo"
                 />
                 <div className="text-[#2c7464] flex gap-14 mb-[90px] text-xl">
-                    <Link href="/agency-landing">About</Link>
-                    <Link href="/agency-landing">Services</Link>
-                    <Link href="/agency-landing">Projects</Link>
+                    <Link
+                        className="hover:text-[#fffbf8]"
+                        href="/agency-landing"
+                    >
+                        About
+                    </Link>
+                    <Link
+                        className="hover:text-[#fffbf8]"
+                        href="/agency-landing"
+                    >
+                        Services
+                    </Link>
+                    <Link
+                        className="hover:text-[#fffbf8]"
+                        href="/agency-landing"
+                    >
+                        Projects
+                    </Link>
                 </div>
                 <div className="flex gap-7">
                     <Link href="/agency-landing">
