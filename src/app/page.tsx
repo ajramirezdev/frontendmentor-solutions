@@ -34,6 +34,12 @@ export default function Home() {
                     >
                         Agency Landing Page
                     </Link>
+                    <Link
+                        href="/url-shortener"
+                        className={`${buttonVariants({ variant: "outline" })}`}
+                    >
+                        URL Shortener (in progress)
+                    </Link>
                 </div>
             </ScrollArea>
         </div>

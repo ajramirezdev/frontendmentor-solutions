@@ -4,6 +4,7 @@ import {
     Inter,
     Barlow,
     Fraunces,
+    Poppins,
 } from "next/font/google";
 
 export const dm_sans = DM_Sans({
@@ -29,5 +30,11 @@ export const barlow = Barlow({
 
 export const fraunces = Fraunces({
     subsets: ["latin"],
+    display: "swap",
+});
+
+export const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["500", "700"],
     display: "swap",
 });
