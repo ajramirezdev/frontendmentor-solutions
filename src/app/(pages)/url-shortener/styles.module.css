@@ -1,0 +1,7 @@
+.baseFontSize {
+    font-size: 18px;
+}
+
+.formGradient {
+    background: linear-gradient(180deg, #fff 50%, #f0f1f6 50%);
+}

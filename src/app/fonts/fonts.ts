@@ -36,5 +36,5 @@ export const fraunces = Fraunces({
 export const poppins = Poppins({
     subsets: ["latin"],
     weight: ["500", "700"],
-    display: "swap",
+    style: "normal",
 });
