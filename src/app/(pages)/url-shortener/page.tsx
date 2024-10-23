@@ -15,7 +15,7 @@ import FullyCustomizable from "@/assets/url-shortener/icon-fully-customizable.sv
 
 import ShortenMobile from "@/assets/url-shortener/bg-shorten-mobile.svg";
 import BoostMobile from "@/assets/url-shortener/bg-boost-mobile.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ShortedDesktop from "@/assets/url-shortener/bg-shorten-desktop.svg";
 import BoostDesktop from "@/assets/url-shortener/bg-boost-desktop.svg";
@@ -31,26 +31,53 @@ export default function URLShortener() {
     const [isUrl, setIsUrl] = useState(false);
     const [shortUrls, setShortUrls] = useState<IUrls[]>([]);
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    useEffect(() => {
+        const storedUrls = localStorage.getItem("urls");
+
+        if (storedUrls) {
+            setShortUrls(JSON.parse(storedUrls));
+        } else {
+            setShortUrls([]);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (shortUrls.length > 0) {
+            localStorage.setItem("urls", JSON.stringify(shortUrls));
+        }
+    }, [shortUrls]);
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         try {
             new URL(url);
             setIsUrl(false);
 
+            const response = await fetch("/api/url-shortener-proxy", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    url,
+                }),
+            });
+
+            const data = await response.json();
+
             const updatedShortUrls =
                 shortUrls.length >= 3 ? shortUrls.slice(1) : shortUrls;
 
             setShortUrls([
                 ...updatedShortUrls,
-                { longUrl: url, shortUrl: "https://rel.ink/k4lKyk" },
+                { longUrl: url, shortUrl: data.result_url },
             ]);
         } catch {
             setIsUrl(true);
         }
 
         setUrl("");
-        console.log(shortUrls);
     };
 
     return (
@@ -145,7 +172,7 @@ export default function URLShortener() {
             >
                 <form
                     onSubmit={(e) => handleSubmit(e)}
-                    className="relative flex lg:flex-row flex-col lg:py-[52px] lg:px-16 max-w-[1110px] w-full gap-4 lg:gap-6 p-6 bg-[hsl(257,27%,26%)] rounded-xl"
+                    className="relative flex lg:flex-row flex-col lg:py-[52px] lg:px-16 max-w-[1110px] w-full gap-4 lg:gap-6 p-6 bg-[hsl(257,27%,26%)] rounded-xl lg:relative"
                 >
                     <input
                         className={`outline-none ${
@@ -158,7 +185,7 @@ export default function URLShortener() {
                         onChange={(e) => setUrl(e.target.value)}
                     />
                     {isUrl && (
-                        <div className="z-20 italic text-[hsl(0,87%,67%)] text-xs -mt-2.5">
+                        <div className="z-30 italic text-[hsl(0,87%,67%)] text-xs -mt-2.5 lg:absolute lg:text-base lg:bottom-4">
                             Please add a link
                         </div>
                     )}
@@ -171,36 +198,40 @@ export default function URLShortener() {
                     <Image
                         className="absolute top-0 right-0 rounded-tr-xl lg:hidden"
                         src={ShortenMobile}
-                        alt="shorted mobile"
+                        alt="shorten mobile"
                     />
                     <Image
-                        className="absolute top-0 right-0 rounded-xl hidden lg:block"
+                        className={`absolute top-0 bottom-0 right-0 rounded-xl hidden lg:block ${
+                            isUrl && "lg:h-[174px]"
+                        }`}
                         src={ShortedDesktop}
-                        alt="shorted mobile"
+                        alt="shorten desktop"
                     />
                 </form>
             </section>
-            <section className="w-full bg-[#f0f1f6] px-6 flex flex-col gap-6">
-                {shortUrls.length !== 0 &&
-                    shortUrls.toReversed().map((url, index) => (
-                        <div
-                            className="bg-white w-full rounded-md text-base"
-                            key={index}
-                        >
-                            <div className="text-[hsl(255,11%,22%)] px-4 pt-3 pb-2 truncate">
-                                {url.longUrl}
-                            </div>
-                            <div className="border-b border-[#bfbfbf6b]"></div>
-                            <div className="p-4">
-                                <div className="text-[hsl(180,66%,49%)] mb-4">
-                                    {url.shortUrl}
+            <section className="w-full bg-[#f0f1f6] px-6 flex justify-center">
+                <div className="flex flex-col gap-6 lg:gap-4 max-w-[1110px] w-full">
+                    {shortUrls.length !== 0 &&
+                        shortUrls.toReversed().map((url, index) => (
+                            <div
+                                className="bg-white w-full rounded-md text-base lg:flex lg:items-center lg:justify-between"
+                                key={index}
+                            >
+                                <div className="text-[hsl(255,11%,22%)] lg:text-xl px-4 pt-3 pb-2 truncate -tracking-2">
+                                    {url.longUrl}
                                 </div>
-                                <button className="bg-[hsl(180,66%,49%)] focus:bg-red-400 font-bold w-full py-2 rounded-md">
-                                    Copy
-                                </button>
+                                <div className="border-b border-[#bfbfbf6b] lg:hidden"></div>
+                                <div className="p-4 lg:flex lg:items-center lg:gap-6">
+                                    <div className="text-[hsl(180,66%,49%)] mb-4 lg:m-0 lg:text-xl -tracking-2">
+                                        {url.shortUrl}
+                                    </div>
+                                    <button className="bg-[hsl(180,66%,49%)] focus:bg-red-400 font-bold w-full py-2 rounded-md lg:w-[104px]">
+                                        Copy
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                </div>
             </section>
             <section className="bg-[#f0f1f6] lg:h-[825px] w-full px-6 pt-[84px] pb-[80px] lg:py-[120px] flex justify-center">
                 <div className="max-w-[1110px]">
