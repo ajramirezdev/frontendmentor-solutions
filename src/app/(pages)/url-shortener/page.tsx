@@ -30,6 +30,11 @@ export default function URLShortener() {
     const [url, setUrl] = useState("");
     const [isUrl, setIsUrl] = useState(false);
     const [shortUrls, setShortUrls] = useState<IUrls[]>([]);
+    const [isCopied, setIsCopied] = useState<{ [key: number]: boolean }>({
+        0: false,
+        1: false,
+        2: false,
+    });
 
     useEffect(() => {
         const storedUrls = localStorage.getItem("urls");
@@ -80,11 +85,24 @@ export default function URLShortener() {
         setUrl("");
     };
 
+    const handleCopy = async (content: string, index: number) => {
+        try {
+            await navigator.clipboard.writeText(content);
+            setIsCopied({ ...isCopied, [index]: true });
+
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            setIsCopied({ ...isCopied, [index]: false });
+        } catch (error) {
+            setIsCopied({ ...isCopied, [index]: false });
+            console.error("Unable to copy to clipboard:", error);
+        }
+    };
+
     return (
         <main
             className={`${poppins.className} ${styles.baseFontSize} bg-[#ffffff] flex flex-col items-center`}
         >
-            <nav className="relative w-full flex justify-between pt-10 p-6 lg:px-0 items-center max-w-[1110px]">
+            <nav className="relative w-full flex justify-between pt-10 lg:pt-12 p-6 lg:px-0 items-center max-w-[1110px]">
                 <div className="flex items-center gap-11">
                     <Image src={Logo} alt="logo" />
                     <div className="hidden lg:flex gap-8 text-[hsl(257,7%,63%)] font-bold">
@@ -141,17 +159,19 @@ export default function URLShortener() {
                     </div>
                 )}
             </nav>
-            <section className="mb-[88px] w-full relative overflow-hidden max-w-[1110px] lg:flex lg:flex-row-reverse ">
-                <Image
-                    className="min-h-[338px] lg:w-1/2 max-h-[484px] mb-8 object-cover object-left pl-6"
-                    src={HeaderImage}
-                    alt="header image"
-                />
-                <div className="px-6 lg:px-0 lg:w-1/2 text-center flex flex-col items-center lg:items-start lg:text-left">
-                    <h1 className="text-[hsl(255,11%,22%)] font-bold text-[2.65rem] leading-[1.15] -tracking-2 mb-3 lg:text-8xl">
+            <section className="mb-[88px] lg:mb-[68px] lg:mt-14 w-full lg:justify-between lg:items-center relative max-w-[1110px] lg:flex lg:flex-row-reverse ">
+                <div className="lg:w-[446px] lg:h-[484px]">
+                    <Image
+                        className="lg:h-full min-h-[338px] mb-8 object-cover object-left pl-6 lg:m-0 lg:p-0 overflow-visible"
+                        src={HeaderImage}
+                        alt="header image"
+                    />
+                </div>
+                <div className="px-6 lg:px-0 lg:w-[664px] text-center flex flex-col items-center lg:items-start lg:text-left">
+                    <h1 className="text-[hsl(255,11%,22%)] font-bold text-[2.65rem] leading-[1.15] -tracking-2 mb-3 lg:text-[5rem]">
                         More than just shorter links
                     </h1>
-                    <p className="text-[hsl(257,7%,63%)] leading-relaxed mb-8">
+                    <p className="text-[hsl(257,7%,63%)] lg:text-2xl leading-relaxed mb-8 -tracking-[0.005rem]">
                         Build your brand&apos;s recognition and get detailed
                         insights on how your links are performing.
                     </p>
@@ -225,8 +245,17 @@ export default function URLShortener() {
                                     <div className="text-[hsl(180,66%,49%)] mb-4 lg:m-0 lg:text-xl -tracking-2">
                                         {url.shortUrl}
                                     </div>
-                                    <button className="bg-[hsl(180,66%,49%)] focus:bg-red-400 font-bold w-full py-2 rounded-md lg:w-[104px]">
-                                        Copy
+                                    <button
+                                        onClick={() =>
+                                            handleCopy(url.shortUrl, index)
+                                        }
+                                        className={`${
+                                            isCopied[index]
+                                                ? "bg-[hsl(257,27%,26%)] hover:bg-[hsl(257,27%,26%)]"
+                                                : "bg-[hsl(180,66%,49%)] hover:bg-[#9ae2e4]"
+                                        } font-bold w-full py-2 rounded-md lg:w-[104px] transition-colors duration-300`}
+                                    >
+                                        {isCopied[index] ? "Copied!" : "Copy"}
                                     </button>
                                 </div>
                             </div>

@@ -38,7 +38,7 @@ export default function Home() {
                         href="/url-shortener"
                         className={`${buttonVariants({ variant: "outline" })}`}
                     >
-                        URL Shortener (in progress)
+                        URL Shortener
                     </Link>
                 </div>
             </ScrollArea>
