@@ -440,7 +440,10 @@ export default function URLShortener() {
                             </Link>
                         </div>
                         <div className="flex gap-6">
-                            <Link href="/url-shortener">
+                            <Link
+                                aria-label="go to facebook"
+                                href="/url-shortener"
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -454,7 +457,10 @@ export default function URLShortener() {
                                     />
                                 </svg>
                             </Link>
-                            <Link href="/url-shortener">
+                            <Link
+                                aria-label="go to twitter"
+                                href="/url-shortener"
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -468,7 +474,10 @@ export default function URLShortener() {
                                     />
                                 </svg>
                             </Link>
-                            <Link href="/url-shortener">
+                            <Link
+                                aria-label="go to pinterest"
+                                href="/url-shortener"
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -482,7 +491,10 @@ export default function URLShortener() {
                                     />
                                 </svg>
                             </Link>
-                            <Link href="/url-shortener">
+                            <Link
+                                aria-label="go to instagram"
+                                href="/url-shortener"
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
